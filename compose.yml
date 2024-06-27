@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:latest
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: scrooge
+      POSTGRES_PASSWORD: scrooge
+      POSTGRES_DB: scrooge
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
