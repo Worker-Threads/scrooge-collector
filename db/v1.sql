@@ -1,13 +1,14 @@
-CREATE SCHEMA IF NOT EXISTS "currency";
+CREATE SCHEMA IF NOT EXISTS "fiat";
 
-CREATE TABLE IF NOT EXISTS currency.currency (
+CREATE TABLE IF NOT EXISTS fiat.currency (
   "symbol" VARCHAR(10),
+  "name"  VARCHAR(255) NOT NULL,
   "marketCap" NUMERIC(40, 17) NOT NULL,
   PRIMARY KEY ("symbol")
 );
 
-CREATE TABLE IF NOT EXISTS currency.bar_d (
-  "currency" VARCHAR(10) REFERENCES currency.currency("symbol"),
+CREATE TABLE IF NOT EXISTS fiat.bar_d (
+  "currency" VARCHAR(10) REFERENCES fiat.currency("symbol"),
   "open" NUMERIC(40, 17) NOT NULL,
   "high" NUMERIC(40, 17) NOT NULL,
   "low" NUMERIC(40, 17) NOT NULL,
@@ -20,6 +21,7 @@ CREATE SCHEMA IF NOT EXISTS "crypto";
 
 CREATE TABLE IF NOT EXISTS crypto.ticker (
   "symbol" VARCHAR(10),
+  "name"  VARCHAR(255) NOT NULL,
   "marketCap" NUMERIC(40, 17) NOT NULL,
   PRIMARY KEY ("symbol")
 );
@@ -38,6 +40,7 @@ CREATE SCHEMA IF NOT EXISTS "etf";
 
 CREATE TABLE IF NOT EXISTS etf.ticker (
   "symbol" VARCHAR(10),
+  "name"  VARCHAR(255) NOT NULL,
   "marketCap" NUMERIC(40, 17),
   PRIMARY KEY ("symbol")
 );
@@ -56,6 +59,7 @@ CREATE SCHEMA IF NOT EXISTS "stock";
 
 CREATE TABLE IF NOT EXISTS stock.ticker (
   "symbol" VARCHAR(10),
+  "name"  VARCHAR(255) NOT NULL,
   "marketCap" NUMERIC(40, 17),
   PRIMARY KEY ("symbol")
 );
