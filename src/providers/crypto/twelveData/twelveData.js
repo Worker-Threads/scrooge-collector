@@ -1,6 +1,6 @@
 import { TwelveData as config } from '../../../config/providers.js';
 
-/** @type {import('./types').TwelveData['getLastBar']} */
+/** @type {import('./types.d.ts').TwelveData['getLastBar']} */
 export const getLastBar = async (ticker) => {
   /** @type {Record<string, string>} */
   const queryParams = {

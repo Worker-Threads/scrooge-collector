@@ -1,0 +1,479 @@
+{
+  "data": [
+    {
+      "symbol": "AAPL",
+      "name": "Apple Inc.",
+      "marketCap": 2824600000000
+    },
+    {
+      "symbol": "MSFT",
+      "name": "Microsoft Corporation",
+      "marketCap": 2547000000000
+    },
+    {
+      "symbol": "GOOGL",
+      "name": "Alphabet Inc.",
+      "marketCap": 1623000000000
+    },
+    {
+      "symbol": "AMZN",
+      "name": "Amazon.com Inc.",
+      "marketCap": 1319000000000
+    },
+    {
+      "symbol": "NVDA",
+      "name": "NVIDIA Corporation",
+      "marketCap": 1026000000000
+    },
+    {
+      "symbol": "TSLA",
+      "name": "Tesla Inc.",
+      "marketCap": 823000000000
+    },
+    {
+      "symbol": "BRK.B",
+      "name": "Berkshire Hathaway Inc.",
+      "marketCap": 784000000000
+    },
+    {
+      "symbol": "META",
+      "name": "Meta Platforms Inc.",
+      "marketCap": 767000000000
+    },
+    {
+      "symbol": "TSM",
+      "name": "Taiwan Semiconductor Manufacturing Company",
+      "marketCap": 552000000000
+    },
+    {
+      "symbol": "V",
+      "name": "Visa Inc.",
+      "marketCap": 530000000000
+    },
+    {
+      "symbol": "UNH",
+      "name": "UnitedHealth Group Incorporated",
+      "marketCap": 486000000000
+    },
+    {
+      "symbol": "JNJ",
+      "name": "Johnson & Johnson",
+      "marketCap": 470000000000
+    },
+    {
+      "symbol": "WMT",
+      "name": "Walmart Inc.",
+      "marketCap": 428000000000
+    },
+    {
+      "symbol": "XOM",
+      "name": "Exxon Mobil Corporation",
+      "marketCap": 419000000000
+    },
+    {
+      "symbol": "JPM",
+      "name": "JPMorgan Chase & Co.",
+      "marketCap": 413000000000
+    },
+    {
+      "symbol": "PG",
+      "name": "Procter & Gamble Co.",
+      "marketCap": 396000000000
+    },
+    {
+      "symbol": "MA",
+      "name": "Mastercard Incorporated",
+      "marketCap": 377000000000
+    },
+    {
+      "symbol": "HD",
+      "name": "The Home Depot Inc.",
+      "marketCap": 370000000000
+    },
+    {
+      "symbol": "BAC",
+      "name": "Bank of America Corporation",
+      "marketCap": 285000000000
+    },
+    {
+      "symbol": "KO",
+      "name": "The Coca-Cola Company",
+      "marketCap": 281000000000
+    },
+    {
+      "symbol": "PFE",
+      "name": "Pfizer Inc.",
+      "marketCap": 275000000000
+    },
+    {
+      "symbol": "CSCO",
+      "name": "Cisco Systems Inc.",
+      "marketCap": 253000000000
+    },
+    {
+      "symbol": "MRK",
+      "name": "Merck & Co. Inc.",
+      "marketCap": 252000000000
+    },
+    {
+      "symbol": "PEP",
+      "name": "PepsiCo Inc.",
+      "marketCap": 250000000000
+    },
+    {
+      "symbol": "DIS",
+      "name": "The Walt Disney Company",
+      "marketCap": 239000000000
+    },
+    {
+      "symbol": "NFLX",
+      "name": "Netflix Inc.",
+      "marketCap": 226000000000
+    },
+    {
+      "symbol": "CMCSA",
+      "name": "Comcast Corporation",
+      "marketCap": 214000000000
+    },
+    {
+      "symbol": "T",
+      "name": "AT&T Inc.",
+      "marketCap": 212000000000
+    },
+    {
+      "symbol": "VZ",
+      "name": "Verizon Communications Inc.",
+      "marketCap": 210000000000
+    },
+    {
+      "symbol": "ADBE",
+      "name": "Adobe Inc.",
+      "marketCap": 208000000000
+    },
+    {
+      "symbol": "CRM",
+      "name": "Salesforce Inc.",
+      "marketCap": 206000000000
+    },
+    {
+      "symbol": "INTC",
+      "name": "Intel Corporation",
+      "marketCap": 203000000000
+    },
+    {
+      "symbol": "NKE",
+      "name": "Nike Inc.",
+      "marketCap": 200000000000
+    },
+    {
+      "symbol": "AVGO",
+      "name": "Broadcom Inc.",
+      "marketCap": 196000000000
+    },
+    {
+      "symbol": "ABBV",
+      "name": "AbbVie Inc.",
+      "marketCap": 194000000000
+    },
+    {
+      "symbol": "TMO",
+      "name": "Thermo Fisher Scientific Inc.",
+      "marketCap": 192000000000
+    },
+    {
+      "symbol": "TXN",
+      "name": "Texas Instruments Incorporated",
+      "marketCap": 188000000000
+    },
+    {
+      "symbol": "LLY",
+      "name": "Eli Lilly and Company",
+      "marketCap": 184000000000
+    },
+    {
+      "symbol": "PM",
+      "name": "Philip Morris International Inc.",
+      "marketCap": 182000000000
+    },
+    {
+      "symbol": "AMD",
+      "name": "Advanced Micro Devices Inc.",
+      "marketCap": 180000000000
+    },
+    {
+      "symbol": "BMY",
+      "name": "Bristol-Myers Squibb Company",
+      "marketCap": 178000000000
+    },
+    {
+      "symbol": "DHR",
+      "name": "Danaher Corporation",
+      "marketCap": 176000000000
+    },
+    {
+      "symbol": "MDT",
+      "name": "Medtronic plc",
+      "marketCap": 174000000000
+    },
+    {
+      "symbol": "MCD",
+      "name": "McDonald's Corporation",
+      "marketCap": 172000000000
+    },
+    {
+      "symbol": "HON",
+      "name": "Honeywell International Inc.",
+      "marketCap": 170000000000
+    },
+    {
+      "symbol": "AMGN",
+      "name": "Amgen Inc.",
+      "marketCap": 168000000000
+    },
+    {
+      "symbol": "GE",
+      "name": "General Electric Company",
+      "marketCap": 166000000000
+    },
+    {
+      "symbol": "QCOM",
+      "name": "QUALCOMM Incorporated",
+      "marketCap": 164000000000
+    },
+    {
+      "symbol": "SBUX",
+      "name": "Starbucks Corporation",
+      "marketCap": 162000000000
+    },
+    {
+      "symbol": "MMM",
+      "name": "3M Company",
+      "marketCap": 160000000000
+    },
+    {
+      "symbol": "GILD",
+      "name": "Gilead Sciences Inc.",
+      "marketCap": 158000000000
+    },
+    {
+      "symbol": "BABA",
+      "name": "Alibaba Group Holding Limited",
+      "marketCap": 156000000000
+    },
+    {
+      "symbol": "CAT",
+      "name": "Caterpillar Inc.",
+      "marketCap": 154000000000
+    },
+    {
+      "symbol": "SYK",
+      "name": "Stryker Corporation",
+      "marketCap": 152000000000
+    },
+    {
+      "symbol": "NEE",
+      "name": "NextEra Energy Inc.",
+      "marketCap": 150000000000
+    },
+    {
+      "symbol": "UPS",
+      "name": "United Parcel Service Inc.",
+      "marketCap": 148000000000
+    },
+    {
+      "symbol": "COP",
+      "name": "ConocoPhillips",
+      "marketCap": 146000000000
+    },
+    {
+      "symbol": "RTX",
+      "name": "Raytheon Technologies Corporation",
+      "marketCap": 144000000000
+    },
+    {
+      "symbol": "BKNG",
+      "name": "Booking Holdings Inc.",
+      "marketCap": 142000000000
+    },
+    {
+      "symbol": "MO",
+      "name": "Altria Group Inc.",
+      "marketCap": 140000000000
+    },
+    {
+      "symbol": "ISRG",
+      "name": "Intuitive Surgical Inc.",
+      "marketCap": 138000000000
+    },
+    {
+      "symbol": "CCI",
+      "name": "Crown Castle Inc.",
+      "marketCap": 136000000000
+    },
+    {
+      "symbol": "DE",
+      "name": "Deere & Company",
+      "marketCap": 134000000000
+    },
+    {
+      "symbol": "BLK",
+      "name": "BlackRock Inc.",
+      "marketCap": 132000000000
+    },
+    {
+      "symbol": "SPGI",
+      "name": "S&P Global Inc.",
+      "marketCap": 130000000000
+    },
+    {
+      "symbol": "SCHW",
+      "name": "The Charles Schwab Corporation",
+      "marketCap": 128000000000
+    },
+    {
+      "symbol": "BDX",
+      "name": "Becton, Dickinson and Company",
+      "marketCap": 126000000000
+    },
+    {
+      "symbol": "ZTS",
+      "name": "Zoetis Inc.",
+      "marketCap": 124000000000
+    },
+    {
+      "symbol": "ANTM",
+      "name": "Anthem Inc.",
+      "marketCap": 122000000000
+    },
+    {
+      "symbol": "EQIX",
+      "name": "Equinix Inc.",
+      "marketCap": 120000000000
+    },
+    {
+      "symbol": "TJX",
+      "name": "The TJX Companies Inc.",
+      "marketCap": 118000000000
+    },
+    {
+      "symbol": "CI",
+      "name": "Cigna Corporation",
+      "marketCap": 116000000000
+    },
+    {
+      "symbol": "MDLZ",
+      "name": "Mondelez International Inc.",
+      "marketCap": 114000000000
+    },
+    {
+      "symbol": "WM",
+      "name": "Waste Management Inc.",
+      "marketCap": 112000000000
+    },
+    {
+      "symbol": "PLD",
+      "name": "Prologis Inc.",
+      "marketCap": 110000000000
+    },
+    {
+      "symbol": "CL",
+      "name": "Colgate-Palmolive Company",
+      "marketCap": 108000000000
+    },
+    {
+      "symbol": "MMM",
+      "name": "3M Company",
+      "marketCap": 106000000000
+    },
+    {
+      "symbol": "CSX",
+      "name": "CSX Corporation",
+      "marketCap": 104000000000
+    },
+    {
+      "symbol": "TGT",
+      "name": "Target Corporation",
+      "marketCap": 102000000000
+    },
+    {
+      "symbol": "ITW",
+      "name": "Illinois Tool Works Inc.",
+      "marketCap": 100000000000
+    },
+    {
+      "symbol": "GS",
+      "name": "The Goldman Sachs Group Inc.",
+      "marketCap": 98000000000
+    },
+    {
+      "symbol": "AXP",
+      "name": "American Express Company",
+      "marketCap": 96000000000
+    },
+    {
+      "symbol": "DUK",
+      "name": "Duke Energy Corporation",
+      "marketCap": 94000000000
+    },
+    {
+      "symbol": "SO",
+      "name": "The Southern Company",
+      "marketCap": 92000000000
+    },
+    {
+      "symbol": "HUM",
+      "name": "Humana Inc.",
+      "marketCap": 90000000000
+    },
+    {
+      "symbol": "CCI",
+      "name": "Crown Castle Inc.",
+      "marketCap": 88000000000
+    },
+    {
+      "symbol": "SRE",
+      "name": "Sempra Energy",
+      "marketCap": 86000000000
+    },
+    {
+      "symbol": "ADP",
+      "name": "Automatic Data Processing Inc.",
+      "marketCap": 84000000000
+    },
+    {
+      "symbol": "MMC",
+      "name": "Marsh & McLennan Companies Inc.",
+      "marketCap": 82000000000
+    },
+    {
+      "symbol": "BSX",
+      "name": "Boston Scientific Corporation",
+      "marketCap": 80000000000
+    },
+    {
+      "symbol": "CHTR",
+      "name": "Charter Communications Inc.",
+      "marketCap": 78000000000
+    },
+    {
+      "symbol": "PGR",
+      "name": "The Progressive Corporation",
+      "marketCap": 76000000000
+    },
+    {
+      "symbol": "ECL",
+      "name": "Ecolab Inc.",
+      "marketCap": 74000000000
+    },
+    {
+      "symbol": "ICE",
+      "name": "Intercontinental Exchange Inc.",
+      "marketCap": 72000000000
+    },
+    {
+      "symbol": "NSC",
+      "name": "Norfolk Southern Corporation",
+      "marketCap": 70000000000
+    }
+  ]
+}
