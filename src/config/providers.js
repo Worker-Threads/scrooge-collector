@@ -12,9 +12,7 @@ export const TwelveData = {
 };
 
 export const Cmc = {
-  baseUrl:
-    process.env.CMC_BASE_URL ||
-    'https://pro-api.coinmarketcap.com/v1/cryptocurrency',
+  baseUrl: process.env.CMC_BASE_URL || 'https://pro-api.coinmarketcap.com/v1',
   apiKey: requireEnv('CMC_API_KEY'),
   limit: {
     rps: parseInt(process.env.CMC_RPS_LIMIT || '30'),

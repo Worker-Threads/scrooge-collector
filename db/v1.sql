@@ -2,6 +2,7 @@ CREATE SCHEMA IF NOT EXISTS "fiat";
 
 CREATE TABLE IF NOT EXISTS fiat.currency (
   "symbol" VARCHAR(10),
+  "sign" VARCHAR(10),
   "name"  VARCHAR(255) NOT NULL,
   "marketCap" NUMERIC(40, 17) NOT NULL,
   PRIMARY KEY ("symbol")

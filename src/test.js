@@ -3,6 +3,7 @@ import { createInterface } from 'node:readline';
 import * as CryptoProvider from './providers/crypto/main.js';
 import * as StockProvider from './providers/stock/main.js';
 import * as EtfProvider from './providers/etf/main.js';
+import * as FiatProvider from './providers/fiat/main.js';
 
 const rl = createInterface({
   input: process.stdin,
@@ -14,10 +15,11 @@ const providers = {
   crypto: CryptoProvider,
   stock: StockProvider,
   etf: EtfProvider,
+  fiat: FiatProvider,
 };
 
 rl.question(
-  'Select provider (crypto, stock, etf): ',
+  'Select provider (crypto, stock, etf, fiat): ',
   async (selectedProvider) => {
     if (providers[selectedProvider]) {
       const provider = providers[selectedProvider];
@@ -30,7 +32,7 @@ rl.question(
         async () => {
           const tickers = await provider.getTopTickers(3);
           console.log({ tickers });
-          identifier = tickers[0].symbol;
+          identifier = tickers[1].symbol;
         },
         // get ticker last closed day bar
         async () => {

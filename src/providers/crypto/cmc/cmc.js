@@ -4,12 +4,11 @@ import { Cmc as config } from '../../../config/providers.js';
 export const getTopTickersByMarketCap = async (limit) => {
   /** @type {Record<string, any>} */
   const queryParams = {
-    start: '1',
     convert: 'USD',
     limit,
   };
 
-  const url = new URL(`${config.baseUrl}/listings/latest`);
+  const url = new URL(`${config.baseUrl}/cryptocurrency/listings/latest`);
   for (const key in queryParams) url.searchParams.append(key, queryParams[key]);
 
   const response = await fetch(url, {
