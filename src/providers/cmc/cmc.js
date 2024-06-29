@@ -1,8 +1,8 @@
 /** @typedef {import('./types').Cmc} Service */
 
-import { Cmc as config } from '../../config/providers.js';
+import { cmc as config } from '../../config/providers.js';
 
-export const Cmc = {
+export const cmc = {
   /** @type {Service['getTickersList']} */
   getTickersList: async (limit) => {
     /** @type {Record<string, any>} */

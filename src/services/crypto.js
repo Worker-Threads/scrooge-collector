@@ -1,16 +1,16 @@
 /** @typedef {import('./types').CryptoService} Service */
 
-import { Cmc } from '../providers/cmc/cmc.js';
-import { TwelveData } from '../providers/twelve-data/twelveData.js';
+import { cmc } from '../providers/cmc/cmc.js';
+import { twelveData } from '../providers/twelve-data/twelveData.js';
 
-export const CryptoService = {
+export const cryptoService = {
   /** @type {Service['getList']} */
-  getList: async (limit) => Cmc.getTickersList(limit),
+  getList: async (limit) => cmc.getTickersList(limit),
 
   /** @type {Service['getLastBar']} */
   getLastBar: async (ticker) => {
     const pair = `${ticker}/USD`;
-    const lastBar = await TwelveData.getLastBar(pair);
+    const lastBar = await twelveData.getLastBar(pair);
 
     return { ...lastBar, ticker };
   },
@@ -18,7 +18,7 @@ export const CryptoService = {
   /** @type {Service['getHistory']} */
   getHistory: async (ticker, from, to) => {
     const pair = `${ticker}/USD`;
-    const history = await TwelveData.getHistory(pair, from, to);
+    const history = await twelveData.getHistory(pair, from, to);
 
     return history.map((h) => ({ ...h, ticker }));
   },

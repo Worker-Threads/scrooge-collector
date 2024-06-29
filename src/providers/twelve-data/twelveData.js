@@ -1,8 +1,8 @@
 /** @typedef {import('./types').TwelveData} Service */
 
-import { TwelveData as config } from '../../config/providers.js';
+import { twelveData as config } from '../../config/providers.js';
 
-export const TwelveData = {
+export const twelveData = {
   /** @type {Service['getLastBar']} */
   getLastBar: async (symbol) => {
     /** @type {Record<string, string>} */

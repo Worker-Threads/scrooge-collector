@@ -1,16 +1,16 @@
 /** @typedef {import('./types').FiatService} Service */
 
-import { Cmc } from '../providers/cmc/cmc.js';
-import { TwelveData } from '../providers/twelve-data/twelveData.js';
+import { cmc } from '../providers/cmc/cmc.js';
+import { twelveData } from '../providers/twelve-data/twelveData.js';
 
-export const FiatService = {
+export const fiatService = {
   /** @type {Service['getList']} */
-  getList: async (limit) => Cmc.getFiatCurrenciesList(limit),
+  getList: async (limit) => cmc.getFiatCurrenciesList(limit),
 
   /** @type {Service['getLastBar']} */
   getLastBar: async (currency) => {
     const pair = `${currency}/USD`;
-    const lastBar = await TwelveData.getLastBar(pair);
+    const lastBar = await twelveData.getLastBar(pair);
 
     return { ...lastBar, currency };
   },
@@ -18,7 +18,7 @@ export const FiatService = {
   /** @type {Service['getHistory']} */
   getHistory: async (currency, from, to) => {
     const pair = `${currency}/USD`;
-    const history = await TwelveData.getHistory(pair, from, to);
+    const history = await twelveData.getHistory(pair, from, to);
 
     return history.map((h) => ({ ...h, currency }));
   },

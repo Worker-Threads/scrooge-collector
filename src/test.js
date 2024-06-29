@@ -1,9 +1,9 @@
 import { setTimeout } from 'node:timers/promises';
 import { createInterface } from 'node:readline';
-import { CryptoService } from './services/crypto.js';
-import { StockService } from './services/stock.js';
-import { EtfService } from './services/etf.js';
-import { FiatService } from './services/fiat.js';
+import { cryptoService } from './services/crypto.js';
+import { stockService } from './services/stock.js';
+import { etfService } from './services/etf.js';
+import { fiatService } from './services/fiat.js';
 
 const rl = createInterface({
   input: process.stdin,
@@ -12,10 +12,10 @@ const rl = createInterface({
 
 /** @type {Record<string, import('./services/types.js').AbstractService>} */
 const services = {
-  crypto: CryptoService,
-  stock: StockService,
-  etf: EtfService,
-  fiat: FiatService,
+  crypto: cryptoService,
+  stock: stockService,
+  etf: etfService,
+  fiat: fiatService,
 };
 
 rl.question(

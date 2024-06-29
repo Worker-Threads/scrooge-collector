@@ -1,6 +1,6 @@
 /** @typedef {import('./types').MockData} Service */
 
-export const MockData = {
+export const mockData = {
   /** @type {Service['getEtfList']} */
   getEtfList: async (limit) => {
     const data = await import('./data/etf-list.json', {

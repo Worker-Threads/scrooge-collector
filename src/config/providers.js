@@ -1,8 +1,7 @@
 import 'dotenv/config';
-
 import { requireEnv } from './utils.js';
 
-export const TwelveData = {
+export const twelveData = {
   baseUrl: process.env.TWELVE_DATA_BASE_URL || 'https://api.twelvedata.com',
   apiKey: requireEnv('TWELVE_DATA_API_KEY'),
   limit: {
@@ -11,7 +10,7 @@ export const TwelveData = {
   },
 };
 
-export const Cmc = {
+export const cmc = {
   baseUrl: process.env.CMC_BASE_URL || 'https://pro-api.coinmarketcap.com/v1',
   apiKey: requireEnv('CMC_API_KEY'),
   limit: {
