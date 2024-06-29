@@ -1,7 +1,9 @@
-import * as commonTypes from './common.d.ts';
+import type * as CommonTypes from './common.d.ts';
 
-export interface Ticker extends commonTypes.Ticker {}
+export interface Ticker extends CommonTypes.Ticker {
+  marketCap: number;
+}
 
-export interface Bar extends commonTypes.OHLC {
+export interface Bar extends CommonTypes.OHLC {
   ticker: string;
 }

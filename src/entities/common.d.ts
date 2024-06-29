@@ -1,7 +1,6 @@
 export interface Ticker {
   symbol: string;
   name: string;
-  marketCap: number;
 }
 
 export interface OHLC {

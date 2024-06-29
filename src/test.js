@@ -1,28 +1,28 @@
 import { setTimeout } from 'node:timers/promises';
 import { createInterface } from 'node:readline';
-import * as CryptoProvider from './providers/crypto/main.js';
-import * as StockProvider from './providers/stock/main.js';
-import * as EtfProvider from './providers/etf/main.js';
-import * as FiatProvider from './providers/fiat/main.js';
+import { CryptoService } from './services/crypto.js';
+import { StockService } from './services/stock.js';
+import { EtfService } from './services/etf.js';
+import { FiatService } from './services/fiat.js';
 
 const rl = createInterface({
   input: process.stdin,
   output: process.stdout,
 });
 
-/** @type {Record<string, any>} */
-const providers = {
-  crypto: CryptoProvider,
-  stock: StockProvider,
-  etf: EtfProvider,
-  fiat: FiatProvider,
+/** @type {Record<string, import('./services/types.js').AbstractService>} */
+const services = {
+  crypto: CryptoService,
+  stock: StockService,
+  etf: EtfService,
+  fiat: FiatService,
 };
 
 rl.question(
-  'Select provider (crypto, stock, etf, fiat): ',
+  'Select service (crypto, stock, etf, fiat): ',
   async (selectedProvider) => {
-    if (providers[selectedProvider]) {
-      const provider = providers[selectedProvider];
+    if (services[selectedProvider]) {
+      const provider = services[selectedProvider];
 
       /** @type {null | string} */
       let identifier = null;
@@ -30,7 +30,7 @@ rl.question(
       const operations = [
         // get top tickers by market cap
         async () => {
-          const tickers = await provider.getTopTickers(3);
+          const tickers = await provider.getList(3);
           console.log({ tickers });
           identifier = tickers[1].symbol;
         },
@@ -47,7 +47,7 @@ rl.question(
           const three_days = 3 * 24 * 60 * 60 * 1000;
           const startDate = new Date(Date.now() - three_days).getTime();
           const endDate = Date.now();
-          const bars = await provider.getHistoricalBars(
+          const bars = await provider.getHistory(
             identifier,
             startDate,
             endDate,
