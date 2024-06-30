@@ -1,4 +1,4 @@
-import type { OHLC } from '../../entities/common.d.ts';
+import type { OHLC } from '../../../entities/common.d.ts';
 
 export interface TwelveData {
   getLastBar: (symbol: string) => Promise<OHLC & { identifier: string }>;

@@ -1,7 +1,7 @@
 /** @typedef {import('./types').StockService} Service */
 
-import { mockData } from '../providers/mock/mock.js';
-import { twelveData } from '../providers/twelve-data/twelveData.js';
+import { mockData } from '../data/providers/mock/mock.js';
+import { twelveData } from '../data/providers/twelve-data/twelveData.js';
 
 export const stockService = {
   /** @type {Service['getList']} */

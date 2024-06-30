@@ -1,7 +1,7 @@
 /** @typedef {import('./types').CryptoService} Service */
 
-import { cmc } from '../providers/cmc/cmc.js';
-import { twelveData } from '../providers/twelve-data/twelveData.js';
+import { cmc } from '../data/providers/cmc/cmc.js';
+import { twelveData } from '../data/providers/twelve-data/twelveData.js';
 
 export const cryptoService = {
   /** @type {Service['getList']} */

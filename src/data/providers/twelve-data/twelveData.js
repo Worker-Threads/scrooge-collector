@@ -1,6 +1,6 @@
 /** @typedef {import('./types').TwelveData} Service */
 
-import { twelveData as config } from '../../config/providers.js';
+import { twelveData as config } from '../../../config/providers.js';
 
 export const twelveData = {
   /** @type {Service['getLastBar']} */
@@ -33,7 +33,6 @@ export const twelveData = {
 
   /** @type {Service['getHistory']} */
   getHistory: async (symbol, from, to) => {
-    console.log({ symbol });
     const formattedFrom = new Date(from).toISOString().split('T')[0];
     const formattedTo = new Date(to).toISOString().split('T')[0];
 
@@ -53,8 +52,6 @@ export const twelveData = {
     const response = await fetch(url);
     /** @type {{ meta: any, values: any[] }} */
     const data = await response.json();
-
-    console.log({ data });
 
     return data.values.map((v) => ({
       identifier: symbol,

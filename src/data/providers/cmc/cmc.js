@@ -1,6 +1,6 @@
 /** @typedef {import('./types').Cmc} Service */
 
-import { cmc as config } from '../../config/providers.js';
+import { cmc as config } from '../../../config/providers.js';
 
 export const cmc = {
   /** @type {Service['getTickersList']} */

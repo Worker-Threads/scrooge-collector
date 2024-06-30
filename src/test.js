@@ -24,41 +24,46 @@ rl.question(
     if (services[selectedProvider]) {
       const provider = services[selectedProvider];
 
-      /** @type {null | string} */
-      let identifier = null;
+      /** @type {any} */
+      const testData = { identifier: null };
 
       const operations = [
-        // get top tickers by market cap
-        async () => {
-          const tickers = await provider.getList(3);
-          console.log({ tickers });
-          identifier = tickers[1].symbol;
-        },
-        // get ticker last closed day bar
-        async () => {
-          if (!identifier) return;
-          const lastBar = await provider.getLastBar(identifier);
-          console.log({ lastBar });
-        },
-        // get ticker ohlc history
-        async () => {
-          if (!identifier) return;
+        {
+          name: `List of ${selectedProvider}`,
+          action: async () => {
+            const tickers = await provider.getList(3);
+            testData.identifier = tickers[1].symbol;
 
-          const three_days = 3 * 24 * 60 * 60 * 1000;
-          const startDate = new Date(Date.now() - three_days).getTime();
-          const endDate = Date.now();
-          const bars = await provider.getHistory(
-            identifier,
-            startDate,
-            endDate,
-          );
-          console.log({ bars });
+            return tickers;
+          },
+        },
+        {
+          name: 'Last closed day bar',
+          action: async () => {
+            if (!testData.identifier) return;
+            return provider.getLastBar(testData.identifier);
+          },
+        },
+        {
+          name: 'OHLC history',
+          action: async () => {
+            if (!testData.identifier) return;
+
+            const three_days = 3 * 24 * 60 * 60 * 1000;
+            const startDate = new Date(Date.now() - three_days).getTime();
+            const endDate = Date.now();
+            return provider.getHistory(testData.identifier, startDate, endDate);
+          },
         },
       ];
 
       for (const operation of operations) {
-        await operation();
+        const { name, action } = operation;
+        console.log(`Executing operation: "${name}"...`);
         await setTimeout(2000);
+        const result = await action();
+        console.log({ result });
+        await setTimeout(1000);
       }
 
       rl.close();
