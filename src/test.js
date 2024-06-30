@@ -73,3 +73,31 @@ rl.question(
     }
   },
 );
+
+// import pg from 'pg';
+// import * as cryptoRepo from './data/repositories/crypto/sql.js';
+// import { config } from './config.js';
+
+// const pool = new pg.Pool(config.pg);
+
+// const tickerSql = cryptoRepo.insertTicker({
+//   symbol: 'ETH',
+//   name: 'Ethereum',
+//   marketCap: 406873166537,
+// });
+
+// const barSql = cryptoRepo.insertBar({
+//   ticker: 'ETH',
+//   open: 3000,
+//   high: 3200,
+//   low: 2900,
+//   close: 3100,
+//   timestamp: new Date('2024-06-01').getTime(),
+// });
+
+// await pool.query(tickerSql.query, tickerSql.params);
+// await pool.query(barSql.query, barSql.params);
+// const { rows } = await pool.query('select * from crypto.bar_d');
+// console.log({ data: rows });
+
+// await pool.end();
