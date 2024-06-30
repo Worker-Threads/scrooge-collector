@@ -1,0 +1,404 @@
+{
+  "data": [
+    {
+      "symbol": "SPY",
+      "name": "SPDR S&P 500 ETF Trust",
+      "marketCap": 420000000000
+    },
+    {
+      "symbol": "IVV",
+      "name": "iShares Core S&P 500 ETF",
+      "marketCap": 325000000000
+    },
+    {
+      "symbol": "VOO",
+      "name": "Vanguard S&P 500 ETF",
+      "marketCap": 280000000000
+    },
+    {
+      "symbol": "VTI",
+      "name": "Vanguard Total Stock Market ETF",
+      "marketCap": 260000000000
+    },
+    {
+      "symbol": "QQQ",
+      "name": "Invesco QQQ Trust",
+      "marketCap": 200000000000
+    },
+    {
+      "symbol": "AGG",
+      "name": "iShares Core U.S. Aggregate Bond ETF",
+      "marketCap": 89000000000
+    },
+    {
+      "symbol": "VTV",
+      "name": "Vanguard Value ETF",
+      "marketCap": 85000000000
+    },
+    {
+      "symbol": "BND",
+      "name": "Vanguard Total Bond Market ETF",
+      "marketCap": 80000000000
+    },
+    {
+      "symbol": "IEMG",
+      "name": "iShares Core MSCI Emerging Markets ETF",
+      "marketCap": 78000000000
+    },
+    {
+      "symbol": "VUG",
+      "name": "Vanguard Growth ETF",
+      "marketCap": 75000000000
+    },
+    {
+      "symbol": "VEA",
+      "name": "Vanguard FTSE Developed Markets ETF",
+      "marketCap": 70000000000
+    },
+    {
+      "symbol": "VO",
+      "name": "Vanguard Mid-Cap ETF",
+      "marketCap": 69000000000
+    },
+    {
+      "symbol": "IWM",
+      "name": "iShares Russell 2000 ETF",
+      "marketCap": 68000000000
+    },
+    {
+      "symbol": "IEFA",
+      "name": "iShares Core MSCI EAFE ETF",
+      "marketCap": 67000000000
+    },
+    {
+      "symbol": "IJH",
+      "name": "iShares Core S&P Mid-Cap ETF",
+      "marketCap": 66000000000
+    },
+    {
+      "symbol": "VWO",
+      "name": "Vanguard FTSE Emerging Markets ETF",
+      "marketCap": 65000000000
+    },
+    {
+      "symbol": "XLK",
+      "name": "Technology Select Sector SPDR Fund",
+      "marketCap": 64000000000
+    },
+    {
+      "symbol": "VYM",
+      "name": "Vanguard High Dividend Yield ETF",
+      "marketCap": 63000000000
+    },
+    {
+      "symbol": "SCHB",
+      "name": "Schwab U.S. Broad Market ETF",
+      "marketCap": 62000000000
+    },
+    {
+      "symbol": "VNQ",
+      "name": "Vanguard Real Estate ETF",
+      "marketCap": 61000000000
+    },
+    {
+      "symbol": "IWF",
+      "name": "iShares Russell 1000 Growth ETF",
+      "marketCap": 60000000000
+    },
+    {
+      "symbol": "IJR",
+      "name": "iShares Core S&P Small-Cap ETF",
+      "marketCap": 59000000000
+    },
+    {
+      "symbol": "DIA",
+      "name": "SPDR Dow Jones Industrial Average ETF Trust",
+      "marketCap": 58000000000
+    },
+    {
+      "symbol": "XLF",
+      "name": "Financial Select Sector SPDR Fund",
+      "marketCap": 57000000000
+    },
+    {
+      "symbol": "XLV",
+      "name": "Health Care Select Sector SPDR Fund",
+      "marketCap": 56000000000
+    },
+    {
+      "symbol": "XLE",
+      "name": "Energy Select Sector SPDR Fund",
+      "marketCap": 55000000000
+    },
+    {
+      "symbol": "VGK",
+      "name": "Vanguard FTSE Europe ETF",
+      "marketCap": 54000000000
+    },
+    {
+      "symbol": "IVW",
+      "name": "iShares S&P 500 Growth ETF",
+      "marketCap": 53000000000
+    },
+    {
+      "symbol": "SHY",
+      "name": "iShares 1-3 Year Treasury Bond ETF",
+      "marketCap": 52000000000
+    },
+    {
+      "symbol": "BNDX",
+      "name": "Vanguard Total International Bond ETF",
+      "marketCap": 51000000000
+    },
+    {
+      "symbol": "HYG",
+      "name": "iShares iBoxx $ High Yield Corporate Bond ETF",
+      "marketCap": 50000000000
+    },
+    {
+      "symbol": "LQD",
+      "name": "iShares iBoxx $ Investment Grade Corporate Bond ETF",
+      "marketCap": 49000000000
+    },
+    {
+      "symbol": "TIP",
+      "name": "iShares TIPS Bond ETF",
+      "marketCap": 48000000000
+    },
+    {
+      "symbol": "XLU",
+      "name": "Utilities Select Sector SPDR Fund",
+      "marketCap": 47000000000
+    },
+    {
+      "symbol": "MBB",
+      "name": "iShares MBS ETF",
+      "marketCap": 46000000000
+    },
+    {
+      "symbol": "GLD",
+      "name": "SPDR Gold Trust",
+      "marketCap": 45000000000
+    },
+    {
+      "symbol": "EFA",
+      "name": "iShares MSCI EAFE ETF",
+      "marketCap": 44000000000
+    },
+    {
+      "symbol": "EEM",
+      "name": "iShares MSCI Emerging Markets ETF",
+      "marketCap": 43000000000
+    },
+    {
+      "symbol": "SCHD",
+      "name": "Schwab U.S. Dividend Equity ETF",
+      "marketCap": 42000000000
+    },
+    {
+      "symbol": "RSP",
+      "name": "Invesco S&P 500 Equal Weight ETF",
+      "marketCap": 41000000000
+    },
+    {
+      "symbol": "IWB",
+      "name": "iShares Russell 1000 ETF",
+      "marketCap": 40000000000
+    },
+    {
+      "symbol": "PFF",
+      "name": "iShares Preferred and Income Securities ETF",
+      "marketCap": 39000000000
+    },
+    {
+      "symbol": "SCHX",
+      "name": "Schwab U.S. Large-Cap ETF",
+      "marketCap": 38000000000
+    },
+    {
+      "symbol": "VEU",
+      "name": "Vanguard FTSE All-World ex-US ETF",
+      "marketCap": 37000000000
+    },
+    {
+      "symbol": "XLY",
+      "name": "Consumer Discretionary Select Sector SPDR Fund",
+      "marketCap": 36000000000
+    },
+    {
+      "symbol": "VCSH",
+      "name": "Vanguard Short-Term Corporate Bond ETF",
+      "marketCap": 35000000000
+    },
+    {
+      "symbol": "BSV",
+      "name": "Vanguard Short-Term Bond ETF",
+      "marketCap": 34000000000
+    },
+    {
+      "symbol": "IEF",
+      "name": "iShares 7-10 Year Treasury Bond ETF",
+      "marketCap": 33000000000
+    },
+    {
+      "symbol": "SCHZ",
+      "name": "Schwab U.S. Aggregate Bond ETF",
+      "marketCap": 32000000000
+    },
+    {
+      "symbol": "BIV",
+      "name": "Vanguard Intermediate-Term Bond ETF",
+      "marketCap": 31000000000
+    },
+    {
+      "symbol": "IWD",
+      "name": "iShares Russell 1000 Value ETF",
+      "marketCap": 30000000000
+    },
+    {
+      "symbol": "MUB",
+      "name": "iShares National Muni Bond ETF",
+      "marketCap": 29000000000
+    },
+    {
+      "symbol": "VCLT",
+      "name": "Vanguard Long-Term Corporate Bond ETF",
+      "marketCap": 28000000000
+    },
+    {
+      "symbol": "MCHI",
+      "name": "iShares MSCI China ETF",
+      "marketCap": 27000000000
+    },
+    {
+      "symbol": "VPL",
+      "name": "Vanguard FTSE Pacific ETF",
+      "marketCap": 26000000000
+    },
+    {
+      "symbol": "IYR",
+      "name": "iShares U.S. Real Estate ETF",
+      "marketCap": 25000000000
+    },
+    {
+      "symbol": "XLI",
+      "name": "Industrial Select Sector SPDR Fund",
+      "marketCap": 24000000000
+    },
+    {
+      "symbol": "IWB",
+      "name": "iShares Russell 1000 ETF",
+      "marketCap": 23000000000
+    },
+    {
+      "symbol": "SPTL",
+      "name": "SPDR Portfolio Long Term Treasury ETF",
+      "marketCap": 22000000000
+    },
+    {
+      "symbol": "EMB",
+      "name": "iShares J.P. Morgan USD Emerging Markets Bond ETF",
+      "marketCap": 21000000000
+    },
+    {
+      "symbol": "ITOT",
+      "name": "iShares Core S&P Total U.S. Stock Market ETF",
+      "marketCap": 20000000000
+    },
+    {
+      "symbol": "VGIT",
+      "name": "Vanguard Intermediate-Term Treasury ETF",
+      "marketCap": 19000000000
+    },
+    {
+      "symbol": "SCHF",
+      "name": "Schwab International Equity ETF",
+      "marketCap": 18000000000
+    },
+    {
+      "symbol": "VT",
+      "name": "Vanguard Total World Stock ETF",
+      "marketCap": 17000000000
+    },
+    {
+      "symbol": "SCHR",
+      "name": "Schwab Intermediate-Term U.S. Treasury ETF",
+      "marketCap": 16000000000
+    },
+    {
+      "symbol": "VTEB",
+      "name": "Vanguard Tax-Exempt Bond ETF",
+      "marketCap": 15000000000
+    },
+    {
+      "symbol": "SDY",
+      "name": "SPDR S&P Dividend ETF",
+      "marketCap": 14000000000
+    },
+    {
+      "symbol": "BND",
+      "name": "Vanguard Total Bond Market ETF",
+      "marketCap": 13000000000
+    },
+    {
+      "symbol": "XLRE",
+      "name": "Real Estate Select Sector SPDR Fund",
+      "marketCap": 12000000000
+    },
+    {
+      "symbol": "SCHH",
+      "name": "Schwab U.S. REIT ETF",
+      "marketCap": 11000000000
+    },
+    {
+      "symbol": "EWJ",
+      "name": "iShares MSCI Japan ETF",
+      "marketCap": 10000000000
+    },
+    {
+      "symbol": "HYLB",
+      "name": "Xtrackers USD High Yield Corporate Bond ETF",
+      "marketCap": 9000000000
+    },
+    {
+      "symbol": "JPST",
+      "name": "JPMorgan Ultra-Short Income ETF",
+      "marketCap": 8000000000
+    },
+    {
+      "symbol": "USMV",
+      "name": "iShares MSCI USA Min Vol Factor ETF",
+      "marketCap": 7000000000
+    },
+    {
+      "symbol": "FREL",
+      "name": "Fidelity MSCI Real Estate Index ETF",
+      "marketCap": 6000000000
+    },
+    {
+      "symbol": "XLU",
+      "name": "Utilities Select Sector SPDR Fund",
+      "marketCap": 5000000000
+    },
+    {
+      "symbol": "HYG",
+      "name": "iShares iBoxx $ High Yield Corporate Bond ETF",
+      "marketCap": 4000000000
+    },
+    {
+      "symbol": "XOP",
+      "name": "SPDR S&P Oil & Gas Exploration & Production ETF",
+      "marketCap": 3000000000
+    },
+    {
+      "symbol": "SPYV",
+      "name": "SPDR Portfolio S&P 500 Value ETF",
+      "marketCap": 2000000000
+    },
+    {
+      "symbol": "SPLG",
+      "name": "SPDR Portfolio S&P 500 ETF",
+      "marketCap": 1000000000
+    }
+  ]
+}
