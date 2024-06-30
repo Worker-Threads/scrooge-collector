@@ -1,6 +1,6 @@
 /** @typedef {import('./types').TwelveData} Service */
 
-import { twelveData as config } from '../../../config/providers.js';
+import { config } from '../../../config.js';
 
 export const twelveData = {
   /** @type {Service['getLastBar']} */
@@ -10,10 +10,10 @@ export const twelveData = {
       interval: '1day',
       eod: 'true',
       symbol,
-      apikey: config.apiKey,
+      apikey: config.twelveData.apiKey,
     };
 
-    const url = new URL(`${config.baseUrl}/quote`);
+    const url = new URL(`${config.twelveData.baseUrl}/quote`);
     for (const key in queryParams)
       url.searchParams.append(key, queryParams[key]);
 
@@ -42,10 +42,10 @@ export const twelveData = {
       symbol,
       start_date: formattedFrom,
       end_date: formattedTo,
-      apikey: config.apiKey,
+      apikey: config.twelveData.apiKey,
     };
 
-    const url = new URL(`${config.baseUrl}/time_series`);
+    const url = new URL(`${config.twelveData.baseUrl}/time_series`);
     for (const key in queryParams)
       url.searchParams.append(key, queryParams[key]);
 
