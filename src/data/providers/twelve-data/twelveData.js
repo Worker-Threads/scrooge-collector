@@ -1,20 +1,24 @@
 /** @typedef {import('./types').TwelveData} Service */
 
 import { config } from '../../../config.js';
+import { requestMultiLimiter } from '../../../utils/limiter.js';
 
 export const twelveData = {
   /** @type {Service['getLastBar']} */
   getLastBar: async (symbol) => {
     try {
+      const { twelveData } = config;
+      await requestMultiLimiter(twelveData.limits);
+
       /** @type {Record<string, string>} */
       const queryParams = {
         interval: '1day',
         eod: 'true',
         symbol,
-        apikey: config.twelveData.apiKey,
+        apikey: twelveData.apiKey,
       };
 
-      const url = new URL(`${config.twelveData.baseUrl}/quote`);
+      const url = new URL(`${twelveData.baseUrl}/quote`);
       for (const key in queryParams)
         url.searchParams.append(key, queryParams[key]);
 
@@ -41,6 +45,9 @@ export const twelveData = {
   /** @type {Service['getHistory']} */
   getHistory: async (symbol, from, to) => {
     try {
+      const { twelveData } = config;
+      await requestMultiLimiter(twelveData.limits);
+
       const formattedFrom = new Date(from).toISOString().split('T')[0];
       const formattedTo = new Date(to).toISOString().split('T')[0];
 
@@ -50,10 +57,10 @@ export const twelveData = {
         symbol,
         start_date: formattedFrom,
         end_date: formattedTo,
-        apikey: config.twelveData.apiKey,
+        apikey: twelveData.apiKey,
       };
 
-      const url = new URL(`${config.twelveData.baseUrl}/time_series`);
+      const url = new URL(`${twelveData.baseUrl}/time_series`);
       for (const key in queryParams)
         url.searchParams.append(key, queryParams[key]);
 

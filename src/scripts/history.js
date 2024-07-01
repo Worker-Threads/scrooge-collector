@@ -9,7 +9,6 @@ import { init as cryptoInit } from '../services/crypto.js';
 import { init as etfInit } from '../services/etf.js';
 import { init as stockInit } from '../services/stock.js';
 import { init as fiatInit } from '../services/fiat.js';
-import { setTimeout } from 'timers/promises';
 
 const pool = new pg.Pool(config.pg);
 
@@ -30,7 +29,6 @@ const loadHistory = async (from, to = Date.now()) => {
     for (const item of list) {
       console.log(`Processing: ${item.symbol}(${item.name})...`);
       await service.loadHistory(item, from, to);
-      await setTimeout(10_000);
     }
     const end = Date.now();
     console.log(

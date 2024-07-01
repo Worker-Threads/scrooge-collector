@@ -1,25 +1,27 @@
 /** @typedef {import('./types').Cmc} Service */
 
 import { config } from '../../../config.js';
+import { requestMultiLimiter } from '../../../utils/limiter.js';
 
 export const cmc = {
   /** @type {Service['getTickersList']} */
   getTickersList: async (limit) => {
     try {
+      const { cmc } = config;
+      await requestMultiLimiter(cmc.limits);
+
       /** @type {Record<string, any>} */
       const queryParams = {
         convert: 'USD',
         limit,
       };
 
-      const url = new URL(
-        `${config.cmc.baseUrl}/cryptocurrency/listings/latest`,
-      );
+      const url = new URL(`${cmc.baseUrl}/cryptocurrency/listings/latest`);
       for (const key in queryParams)
         url.searchParams.append(key, queryParams[key]);
 
       const response = await fetch(url, {
-        headers: { 'X-CMC_PRO_API_KEY': config.cmc.apiKey },
+        headers: { 'X-CMC_PRO_API_KEY': cmc.apiKey },
       });
 
       /** @type {{ status: { error_code: number, error_message: string }, data: any[] }} */
@@ -40,15 +42,18 @@ export const cmc = {
   /** @type {Service['getFiatCurrenciesList']} */
   getFiatCurrenciesList: async (limit) => {
     try {
+      const { cmc } = config;
+      await requestMultiLimiter(cmc.limits);
+
       /** @type {Record<string, any>} */
       const queryParams = { limit };
 
-      const url = new URL(`${config.cmc.baseUrl}/fiat/map`);
+      const url = new URL(`${cmc.baseUrl}/fiat/map`);
       for (const key in queryParams)
         url.searchParams.append(key, queryParams[key]);
 
       const response = await fetch(url, {
-        headers: { 'X-CMC_PRO_API_KEY': config.cmc.apiKey },
+        headers: { 'X-CMC_PRO_API_KEY': cmc.apiKey },
       });
 
       /** @type {{ status: { error_code: number, error_message: string }, data: any[] }} */
