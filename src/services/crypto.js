@@ -1,25 +1,35 @@
-/** @typedef {import('./types').CryptoService} Service */
+/** @typedef {import('./types').Init['crypto']} init */
 
+import { init as initRepo } from '../data/repositories/crypto/main.js';
 import { cmc } from '../data/providers/cmc/cmc.js';
 import { twelveData } from '../data/providers/twelve-data/twelveData.js';
 
-export const cryptoService = {
-  /** @type {Service['getList']} */
-  getList: async (limit) => cmc.getTickersList(limit),
+/** @type {init} */
+export const init = (pg) => {
+  const cryptoRepo = initRepo(pg);
 
-  /** @type {Service['getLastBar']} */
-  getLastBar: async (ticker) => {
-    const pair = `${ticker}/USD`;
-    const lastBar = await twelveData.getLastBar(pair);
+  return {
+    getList: async (limit) => cryptoRepo.getTickers(limit),
 
-    return { ...lastBar, ticker };
-  },
+    loadList: async (limit) => {
+      const tickersList = await cmc.getTickersList(limit);
+      await Promise.all(tickersList.map((t) => cryptoRepo.saveTicker(t)));
+    },
 
-  /** @type {Service['getHistory']} */
-  getHistory: async (ticker, from, to) => {
-    const pair = `${ticker}/USD`;
-    const history = await twelveData.getHistory(pair, from, to);
+    loadLastBar: async (ticker) => {
+      const pair = `${ticker}/USD`;
+      const lastBar = await twelveData.getLastBar(pair);
 
-    return history.map((h) => ({ ...h, ticker }));
-  },
+      await cryptoRepo.saveBar({ ...lastBar, ticker });
+    },
+
+    loadHistory: async (ticker, from, to) => {
+      const pair = `${ticker}/USD`;
+      const history = await twelveData.getHistory(pair, from, to);
+
+      await Promise.all(
+        history.map((h) => cryptoRepo.saveBar({ ...h, ticker })),
+      );
+    },
+  };
 };

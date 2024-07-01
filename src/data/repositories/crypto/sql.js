@@ -4,6 +4,22 @@
  */
 
 /**
+ * @param {number} limit
+ * @returns {{ query: string, params: any[] }}
+ */
+export const selectTickers = (limit) => {
+  const query = `
+    SELECT * FROM crypto.ticker
+    ORDER BY "symbol"
+    LIMIT $1;
+  `;
+
+  const params = [limit];
+
+  return { query, params };
+};
+
+/**
  * @param {Ticker} ticker
  * @returns {{ query: string, params: any[] }}
  */
@@ -16,7 +32,8 @@ export const insertTicker = (ticker) => {
     ON CONFLICT ("symbol")
     DO UPDATE SET
       "name" = EXCLUDED."name",
-      "marketCap" = EXCLUDED."marketCap";`;
+      "marketCap" = EXCLUDED."marketCap";
+    `;
 
   const params = [symbol, name, marketCap];
 
@@ -38,7 +55,8 @@ export const insertBar = (bar) => {
       "open" = EXCLUDED."open",
       "high" = EXCLUDED."high",
       "low" = EXCLUDED."low",
-      "close" = EXCLUDED."close";`;
+      "close" = EXCLUDED."close";
+    `;
 
   const params = [ticker, open, high, low, close, new Date(timestamp)];
 
