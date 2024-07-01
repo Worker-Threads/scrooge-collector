@@ -17,15 +17,19 @@ export const init = (pg) => {
     },
 
     loadLastBar: async (ticker) => {
-      const lastBar = await twelveData.getLastBar(ticker);
+      const { symbol } = ticker;
+      const lastBar = await twelveData.getLastBar(symbol);
 
-      await etfRepo.saveBar({ ...lastBar, ticker });
+      if (lastBar) await etfRepo.saveBar({ ...lastBar, ticker: symbol });
     },
 
     loadHistory: async (ticker, from, to) => {
-      const history = await twelveData.getHistory(ticker, from, to);
+      const { symbol } = ticker;
+      const history = await twelveData.getHistory(symbol, from, to);
 
-      await Promise.all(history.map((h) => etfRepo.saveBar({ ...h, ticker })));
+      await Promise.all(
+        history.map((h) => etfRepo.saveBar({ ...h, ticker: symbol })),
+      );
     },
   };
 };

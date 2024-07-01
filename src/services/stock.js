@@ -17,16 +17,18 @@ export const init = (pg) => {
     },
 
     loadLastBar: async (ticker) => {
-      const lastBar = await twelveData.getLastBar(ticker);
+      const { symbol } = ticker;
+      const lastBar = await twelveData.getLastBar(symbol);
 
-      await stockRepo.saveBar({ ...lastBar, ticker });
+      if (lastBar) await stockRepo.saveBar({ ...lastBar, ticker: symbol });
     },
 
     loadHistory: async (ticker, from, to) => {
-      const history = await twelveData.getHistory(ticker, from, to);
+      const { symbol } = ticker;
+      const history = await twelveData.getHistory(symbol, from, to);
 
       await Promise.all(
-        history.map((h) => stockRepo.saveBar({ ...h, ticker })),
+        history.map((h) => stockRepo.saveBar({ ...h, ticker: symbol })),
       );
     },
   };

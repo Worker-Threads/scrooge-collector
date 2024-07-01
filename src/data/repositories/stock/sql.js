@@ -4,17 +4,17 @@
  */
 
 /**
- * @param {number} limit
+ * @param {number=} limit
  * @returns {{ query: string, params: any[] }}
  */
 export const selectTickers = (limit) => {
-  const query = `
-    SELECT * FROM stock.ticker
-    ORDER BY "symbol"
-    LIMIT $1;
-  `;
+  let query = 'SELECT * FROM stock.ticker';
+  const params = [];
 
-  const params = [limit];
+  if (limit) {
+    query += 'ORDER BY "symbol" LIMIT $1;';
+    params.push(limit);
+  }
 
   return { query, params };
 };

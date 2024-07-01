@@ -5,11 +5,11 @@ import type * as EtfT from '../entities/etf.d.ts';
 import type * as StockT from '../entities/stock.d.ts';
 import type * as FiatT from '../entities/fiat.d.ts';
 
-export class AbstractService<T extends Ticker> {
-  getList(limit: number): Promise<T[]>;
+export class AbstractService<T = Ticker> {
+  getList(limit?: number): Promise<T[]>;
   loadList(limit: number): Promise<void>;
-  loadLastBar(ticker: string): Promise<void>;
-  loadHistory(ticker: string, from: number, to: number): Promise<void>;
+  loadLastBar(ticker: T): Promise<void>;
+  loadHistory(ticker: T, from: number, to: number): Promise<void>;
 }
 
 export class CryptoService extends AbstractService<CryptoT.Ticker> {}
