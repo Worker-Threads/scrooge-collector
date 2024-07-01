@@ -17,18 +17,22 @@ export const init = (pg) => {
     },
 
     loadLastBar: async (ticker) => {
-      const pair = `${ticker}/USD`;
+      const { symbol } = ticker;
+
+      const pair = `${symbol}/USD`;
       const lastBar = await twelveData.getLastBar(pair);
 
-      await cryptoRepo.saveBar({ ...lastBar, ticker });
+      if (lastBar) await cryptoRepo.saveBar({ ...lastBar, ticker: symbol });
     },
 
     loadHistory: async (ticker, from, to) => {
-      const pair = `${ticker}/USD`;
+      const { symbol } = ticker;
+
+      const pair = `${symbol}/USD`;
       const history = await twelveData.getHistory(pair, from, to);
 
       await Promise.all(
-        history.map((h) => cryptoRepo.saveBar({ ...h, ticker })),
+        history.map((h) => cryptoRepo.saveBar({ ...h, ticker: symbol })),
       );
     },
   };

@@ -17,18 +17,20 @@ export const init = (pg) => {
     },
 
     loadLastBar: async (currency) => {
-      const pair = `${currency}/USD`;
+      const { symbol } = currency;
+      const pair = `${symbol}/USD`;
       const lastBar = await twelveData.getLastBar(pair);
 
-      await fiatRepo.saveBar({ ...lastBar, currency });
+      if (lastBar) await fiatRepo.saveBar({ ...lastBar, currency: symbol });
     },
 
     loadHistory: async (currency, from, to) => {
-      const pair = `${currency}/USD`;
+      const { symbol } = currency;
+      const pair = `${symbol}/USD`;
       const history = await twelveData.getHistory(pair, from, to);
 
       await Promise.all(
-        history.map((h) => fiatRepo.saveBar({ ...h, currency })),
+        history.map((h) => fiatRepo.saveBar({ ...h, currency: symbol })),
       );
     },
   };
