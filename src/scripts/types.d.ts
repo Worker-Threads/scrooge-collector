@@ -1,3 +1,7 @@
 export interface History {
-  load: (from: number, to?: number) => Promise<void>;
+  load: (options: {
+    services: string[];
+    from: number;
+    to: number;
+  }) => Promise<void>;
 }

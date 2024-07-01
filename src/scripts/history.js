@@ -4,6 +4,8 @@
  */
 
 import pg from 'pg';
+import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
 import { config } from '../config.js';
 import { init as cryptoInit } from '../services/crypto.js';
 import { init as etfInit } from '../services/etf.js';
@@ -13,7 +15,7 @@ import { init as fiatInit } from '../services/fiat.js';
 const pool = new pg.Pool(config.pg);
 
 /** @type {Record<string, Service>} */
-const services = {
+const servicesMap = {
   crypto: cryptoInit(pool),
   etf: etfInit(pool),
   stock: stockInit(pool),
@@ -21,8 +23,10 @@ const services = {
 };
 
 /** @type {History['load']} */
-const loadHistory = async (from, to = Date.now()) => {
-  for (const [key, service] of Object.entries(services)) {
+const loadHistory = async ({ services, from, to }) => {
+  for (const key of services) {
+    const service = servicesMap[key];
+    if (!service) throw Error(`Service "${key}" is not valid.`);
     console.log(`Start running history load on ${key} service...`);
     const start = Date.now();
     const list = await service.getList();
@@ -32,9 +36,39 @@ const loadHistory = async (from, to = Date.now()) => {
     }
     const end = Date.now();
     console.log(
-      `Finish running  history load on ${key} service. Duration: ${(end - start) / 1000}s.`,
+      `Finish running history load on ${key} service. Duration: ${(end - start) / 1000}s.`,
     );
   }
 };
 
-await loadHistory(new Date('2021').getTime());
+// E.g: node src/scripts/history.js --from 2023-05-05 --to 2024-06-06 --services etf fiat
+/** @type {{ services: string[]; from: number; to: number }} */
+// @ts-ignore
+const argv = yargs(hideBin(process.argv))
+  .option('services', {
+    type: 'string',
+    description: 'Comma-separated list of services to process',
+    array: true,
+    choices: ['crypto', 'etf', 'stock', 'fiat'],
+    default: Object.keys(servicesMap),
+  })
+  .option('from', {
+    type: 'string',
+    description: 'Start date in YYYY-MM-DD format',
+    demandOption: true,
+  })
+  .option('to', {
+    type: 'string',
+    description: 'End date in YYYY-MM-DD format',
+    default: new Date(),
+  })
+  .help()
+  .alias('help', 'h').argv;
+
+await loadHistory({
+  services: argv.services,
+  from: new Date(argv.from).getTime(),
+  to: new Date(argv.to).getTime(),
+});
+
+await pool.end();
