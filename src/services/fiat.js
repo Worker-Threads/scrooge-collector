@@ -1,25 +1,35 @@
-/** @typedef {import('./types').FiatService} Service */
+/** @typedef {import('./types').Init['fiat']} init */
 
+import { init as initRepo } from '../data/repositories/fiat/main.js';
 import { cmc } from '../data/providers/cmc/cmc.js';
 import { twelveData } from '../data/providers/twelve-data/twelveData.js';
 
-export const fiatService = {
-  /** @type {Service['getList']} */
-  getList: async (limit) => cmc.getFiatCurrenciesList(limit),
+/** @type {init} */
+export const init = (pg) => {
+  const fiatRepo = initRepo(pg);
 
-  /** @type {Service['getLastBar']} */
-  getLastBar: async (currency) => {
-    const pair = `${currency}/USD`;
-    const lastBar = await twelveData.getLastBar(pair);
+  return {
+    getList: async (limit) => fiatRepo.getTickers(limit),
 
-    return { ...lastBar, currency };
-  },
+    loadList: async (limit) => {
+      const currencyList = await cmc.getFiatCurrenciesList(limit);
+      await Promise.all(currencyList.map((t) => fiatRepo.saveTicker(t)));
+    },
 
-  /** @type {Service['getHistory']} */
-  getHistory: async (currency, from, to) => {
-    const pair = `${currency}/USD`;
-    const history = await twelveData.getHistory(pair, from, to);
+    loadLastBar: async (currency) => {
+      const pair = `${currency}/USD`;
+      const lastBar = await twelveData.getLastBar(pair);
 
-    return history.map((h) => ({ ...h, currency }));
-  },
+      await fiatRepo.saveBar({ ...lastBar, currency });
+    },
+
+    loadHistory: async (currency, from, to) => {
+      const pair = `${currency}/USD`;
+      const history = await twelveData.getHistory(pair, from, to);
+
+      await Promise.all(
+        history.map((h) => fiatRepo.saveBar({ ...h, currency })),
+      );
+    },
+  };
 };

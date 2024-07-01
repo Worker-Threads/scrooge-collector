@@ -1,23 +1,33 @@
-/** @typedef {import('./types').StockService} Service */
+/** @typedef {import('./types').Init['stock']} init */
 
+import { init as initRepo } from '../data/repositories/stock/main.js';
 import { mockData } from '../data/providers/mock/mock.js';
 import { twelveData } from '../data/providers/twelve-data/twelveData.js';
 
-export const stockService = {
-  /** @type {Service['getList']} */
-  getList: async (limit) => mockData.getStockList(limit),
+/** @type {init} */
+export const init = (pg) => {
+  const stockRepo = initRepo(pg);
 
-  /** @type {Service['getLastBar']} */
-  getLastBar: async (ticker) => {
-    const lastBar = await twelveData.getLastBar(ticker);
+  return {
+    getList: async (limit) => stockRepo.getTickers(limit),
 
-    return { ...lastBar, ticker };
-  },
+    loadList: async (limit) => {
+      const tickersList = await mockData.getStockList(limit);
+      await Promise.all(tickersList.map((t) => stockRepo.saveTicker(t)));
+    },
 
-  /** @type {Service['getHistory']} */
-  getHistory: async (ticker, from, to) => {
-    const history = await twelveData.getHistory(ticker, from, to);
+    loadLastBar: async (ticker) => {
+      const lastBar = await twelveData.getLastBar(ticker);
 
-    return history.map((h) => ({ ...h, ticker }));
-  },
+      await stockRepo.saveBar({ ...lastBar, ticker });
+    },
+
+    loadHistory: async (ticker, from, to) => {
+      const history = await twelveData.getHistory(ticker, from, to);
+
+      await Promise.all(
+        history.map((h) => stockRepo.saveBar({ ...h, ticker })),
+      );
+    },
+  };
 };

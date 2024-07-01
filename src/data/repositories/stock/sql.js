@@ -4,6 +4,22 @@
  */
 
 /**
+ * @param {number} limit
+ * @returns {{ query: string, params: any[] }}
+ */
+export const selectTickers = (limit) => {
+  const query = `
+    SELECT * FROM stock.ticker
+    ORDER BY "symbol"
+    LIMIT $1;
+  `;
+
+  const params = [limit];
+
+  return { query, params };
+};
+
+/**
  * @param {Ticker} ticker
  * @returns {{ query: string, params: any[] }}
  */

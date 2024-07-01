@@ -4,6 +4,22 @@
  */
 
 /**
+ * @param {number} limit
+ * @returns {{ query: string, params: any[] }}
+ */
+export const selectCurrencies = (limit) => {
+  const query = `
+    SELECT * FROM fiat.currency
+    ORDER BY "symbol"
+    LIMIT $1;
+  `;
+
+  const params = [limit];
+
+  return { query, params };
+};
+
+/**
  * @param {Currency} currency
  * @returns {{ query: string, params: any[] }}
  */
