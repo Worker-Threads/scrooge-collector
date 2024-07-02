@@ -1,6 +1,6 @@
 /**
  * @typedef {import('../services/types').AbstractService} Service
- * @typedef {import('./types').History} History
+ * @typedef {import('./types').Scripts} Scripts
  */
 
 import pg from 'pg';
@@ -22,12 +22,12 @@ const servicesMap = {
   fiat: fiatInit(pool),
 };
 
-/** @type {History['load']} */
+/** @type {Scripts['loadHistory']} */
 const loadHistory = async ({ services, from, to }) => {
   for (const key of services) {
     const service = servicesMap[key];
     if (!service) throw Error(`Service "${key}" is not valid.`);
-    console.log(`Start running history load on ${key} service...`);
+    console.log(`Start running "History Load" on ${key} service...`);
     const start = Date.now();
     const list = await service.getList();
     for (const item of list) {
@@ -36,7 +36,7 @@ const loadHistory = async ({ services, from, to }) => {
     }
     const end = Date.now();
     console.log(
-      `Finish running history load on ${key} service. Duration: ${(end - start) / 1000}s.`,
+      `Finish running "History Load" on ${key} service. Duration: ${(end - start) / 1000}s.`,
     );
   }
 };
@@ -47,7 +47,7 @@ const loadHistory = async ({ services, from, to }) => {
 const argv = yargs(hideBin(process.argv))
   .option('services', {
     type: 'string',
-    description: 'Comma-separated list of services to process',
+    description: 'Space separated array of services to process: etf crypto...',
     array: true,
     choices: ['crypto', 'etf', 'stock', 'fiat'],
     default: Object.keys(servicesMap),
