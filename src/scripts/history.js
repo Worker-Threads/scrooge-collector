@@ -27,16 +27,16 @@ const loadHistory = async ({ services, from, to }) => {
   for (const key of services) {
     const service = servicesMap[key];
     if (!service) throw Error(`Service "${key}" is not valid.`);
-    console.log(`Start running "History Load" on ${key} service...`);
+    console.log(`Start running "History Load" on ${key} service:`);
     const start = Date.now();
     const list = await service.getList();
     for (const item of list) {
-      console.log(`Processing: ${item.symbol}(${item.name})...`);
+      console.log(`-- Processing: ${item.symbol}(${item.name})`);
       await service.loadHistory(item, from, to);
     }
     const end = Date.now();
     console.log(
-      `Finish running "History Load" on ${key} service. Duration: ${(end - start) / 1000}s.`,
+      `Finish running "History Load" on ${key} service. Duration: ${(end - start) / 1000}s.\n`,
     );
   }
 };

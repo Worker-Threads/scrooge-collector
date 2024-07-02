@@ -44,12 +44,12 @@ const loadLastBar = async ({ services }) => {
     const start = Date.now();
     const list = await service.getList();
     for (const item of list) {
-      console.log(`Processing: ${item.symbol}(${item.name})...`);
+      console.log(`-- Processing: ${item.symbol}(${item.name})`);
       await service.loadLastBar(item);
     }
     const end = Date.now();
     console.log(
-      `Finish running "Last Bar Load" on ${key} service. Duration: ${(end - start) / 1000}s.`,
+      `Finish running "Last Bar Load" on ${key} service. Duration: ${(end - start) / 1000}s.\n`,
     );
   }
 };
