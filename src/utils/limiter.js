@@ -18,9 +18,7 @@ export const requestLimiter = async ({ key, rate, time }) => {
     if (limit.used < rate) break;
 
     const resetIn = limit.expiresAt - Date.now();
-    console.log(
-      `Awaiting ${Math.round(resetIn / 1000)}s for "${key}" limit reset...`,
-    );
+    console.log(`Awaiting ${resetIn / 1000}s for "${key}" limit reset...`);
 
     await setTimeout(resetIn);
   }
