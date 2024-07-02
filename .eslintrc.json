@@ -17,14 +17,7 @@
   "rules": {
     "import/extensions": "off",
     "no-underscore-dangle": "off",
-    "no-unused-vars": [
-      "error",
-      {
-        "args": "none",
-        "varsIgnorePattern": "^_",
-        "argsIgnorePattern": "^_"
-      }
-    ],
+    "no-unused-vars": ["error", { "args": "none", "varsIgnorePattern": "^_" }],
     "import/prefer-default-export": "off",
     "arrow-body-style": "off",
     "quotes": ["error", "single", { "avoidEscape": true }]
