@@ -15,12 +15,12 @@ export const config = {
     apiKey: requireEnv('TWELVE_DATA_API_KEY'),
     limits: [
       {
-        key: 'twelveData_rpm',
+        key: 'TwelveData: RPM',
         time: 1000 * 60,
         rate: parseInt(process.env.TWELVE_DATA_REQUESTS_PER_MINUTE || '8'),
       },
       {
-        key: 'twelveData_rpd',
+        key: 'TwelveData: RPD',
         time: 1000 * 60 * 60 * 24,
         rate: parseInt(process.env.TWELVE_DATA_REQUESTS_PER_DAY || '800'),
       },
@@ -32,12 +32,12 @@ export const config = {
     apiKey: requireEnv('CMC_API_KEY'),
     limits: [
       {
-        key: 'cmc_rpm',
+        key: 'CMC: RPM',
         time: 1000 * 60,
         rate: parseInt(process.env.CMC_REQUESTS_PER_MINUTE || '30'),
       },
       {
-        key: 'cmc_rpd',
+        key: 'CMC: RPD',
         time: 1000 * 60 * 60 * 24,
         rate: parseInt(process.env.CMC_REQUESTS_PER_DAY || '330'),
       },
