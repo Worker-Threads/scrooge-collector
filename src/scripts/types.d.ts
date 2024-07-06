@@ -11,4 +11,8 @@ export interface Scripts {
     services: string[];
     timeframe: Timeframe;
   }) => Promise<void>;
+  loadTickers: (options: {
+    services: string[];
+    limit: number;
+  }) => Promise<void>;
 }
