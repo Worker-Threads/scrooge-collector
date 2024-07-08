@@ -25,6 +25,8 @@ export const config = {
         rate: parseInt(process.env.TWELVE_DATA_REQUESTS_PER_DAY || '800'),
       },
     ],
+    defaultFrom: 0, // 1970-01-01
+    defaultTo: Date.now(),
   },
 
   cmc: {
