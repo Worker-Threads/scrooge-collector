@@ -6,6 +6,14 @@
 import { config } from '../../../config.js';
 import { requestMultiLimiter } from '../../../utils/limiter.js';
 
+/** @type {Record<string, AssetType>} */
+const instrumentTypeToAssetType = {
+  'Digital Currency': 'crypto',
+  ETF: 'etf',
+  'Common Stock': 'stock',
+  'Physical Currency': 'fiat',
+};
+
 export const twelveData = {
   /** @type {Service['getLastBar']} */
   getLastBar: async (symbol) => {
@@ -48,6 +56,7 @@ export const twelveData = {
   /** @type {Service['getHistory']} */
   getHistory: async (
     symbol,
+    type,
     from = config.twelveData.defaultFrom,
     to = config.twelveData.defaultTo,
   ) => {
@@ -72,9 +81,16 @@ export const twelveData = {
         url.searchParams.append(key, queryParams[key]);
 
       const response = await fetch(url);
-      /** @type {{ meta: any, values: any[], status: 'ok' | 'error', message?: string }} */
+      /** @type {{ meta: { type: string }, values: any[], status: 'ok' | 'error', message?: string }} */
       const data = await response.json();
       if (data.status === 'error') throw Error(data.message);
+
+      const convertedType = instrumentTypeToAssetType[data.meta.type];
+
+      if (convertedType !== type)
+        throw Error(
+          `Asset type mismatch: requested: "${type}", returned: "${convertedType}"`,
+        );
 
       return data.values.map((v) => ({
         identifier: symbol,
@@ -117,14 +133,6 @@ export const twelveData = {
        * }} */
       const data = await response.json();
       if (data.status === 'error') throw Error(data.message);
-
-      /** @type {Record<string, AssetType>} */
-      const instrumentTypeToAssetType = {
-        'Digital Currency': 'crypto',
-        ETF: 'etf',
-        'Common Stock': 'stock',
-        'Physical Currency': 'fiat',
-      };
 
       const tickers = data.data
         .map((t) => ({
