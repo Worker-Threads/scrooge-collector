@@ -19,6 +19,8 @@ export const init = (pg) => {
     loadTicker: async (symbol) => {
       const ticker = await twelveData.tickerInfo(symbol);
       if (ticker) await etfRepo.saveTicker({ ...ticker, marketCap: 0 });
+
+      return { loaded: !!ticker };
     },
 
     loadLastBar: async (ticker) => {

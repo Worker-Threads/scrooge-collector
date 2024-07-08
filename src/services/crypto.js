@@ -25,6 +25,8 @@ export const init = (pg) => {
           name: ticker.name.split(' US Dollar')[0],
           marketCap: 0,
         });
+
+      return { loaded: !!ticker };
     },
 
     loadLastBar: async (ticker) => {

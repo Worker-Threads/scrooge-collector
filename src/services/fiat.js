@@ -17,7 +17,7 @@ export const init = (pg) => {
     },
 
     // All currencies are already loaded.
-    loadTicker: async () => {},
+    loadTicker: async () => ({ loaded: false }),
 
     loadLastBar: async (currency) => {
       const { symbol } = currency;

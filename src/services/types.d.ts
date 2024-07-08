@@ -8,7 +8,7 @@ import type * as FiatT from '../entities/fiat.d.ts';
 export class AbstractService<T = Ticker> {
   getList(limit?: number): Promise<T[]>;
   loadList(limit: number): Promise<void>;
-  loadTicker(symbol: string): Promise<void>;
+  loadTicker(symbol: string): Promise<{ loaded: boolean }>;
   loadLastBar(ticker: T): Promise<void>;
   loadHistory(ticker: T, from: number, to: number): Promise<void>;
   symbolSearch(symbol: string): Promise<Ticker[]>;
