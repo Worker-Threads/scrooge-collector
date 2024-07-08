@@ -21,16 +21,15 @@ export const init = (pg) => {
 
     loadTicker: async (symbol) => {
       const ticker = await twelveData.tickerInfo(symbol);
-      if (!ticker) return { loaded: false };
+      const bars = await twelveData.getHistory(symbol, 'stock');
+      if (!ticker || !bars.length) return { loaded: false };
 
       await stockRepo.saveTicker({ ...ticker, marketCap: 0 });
-      const bars = await twelveData.getHistory(symbol, 'stock');
-
       await Promise.all(
         bars.map((bar) => stockRepo.saveBar({ ...bar, ticker: symbol })),
       );
 
-      return { loaded: bars.length > 0 };
+      return { loaded: true };
     },
 
     loadLastBar: async (ticker) => {
