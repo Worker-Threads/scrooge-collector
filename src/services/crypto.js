@@ -16,6 +16,17 @@ export const init = (pg) => {
       await Promise.all(tickersList.map((t) => cryptoRepo.saveTicker(t)));
     },
 
+    loadTicker: async (symbol) => {
+      const pair = `${symbol}/USD`;
+      const ticker = await twelveData.tickerInfo(pair);
+      if (ticker)
+        await cryptoRepo.saveTicker({
+          symbol: ticker.symbol.split('/USD')[0],
+          name: ticker.name.split(' US Dollar')[0],
+          marketCap: 0,
+        });
+    },
+
     loadLastBar: async (ticker) => {
       const { symbol } = ticker;
 
@@ -34,6 +45,18 @@ export const init = (pg) => {
       await Promise.all(
         history.map((h) => cryptoRepo.saveBar({ ...h, ticker: symbol })),
       );
+    },
+
+    symbolSearch: async (symbol) => {
+      const tickers = await twelveData.symbolSearch(symbol);
+      const cryptoTickers = tickers.filter(
+        (t) => t.type === 'crypto' && t.symbol.endsWith('/USD'),
+      );
+
+      return cryptoTickers.map((t) => ({
+        symbol: t.symbol.split('/USD')[0],
+        name: t.name.split(' US Dollar')[0],
+      }));
     },
   };
 };

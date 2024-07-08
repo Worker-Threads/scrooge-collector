@@ -16,6 +16,11 @@ export const init = (pg) => {
       await Promise.all(tickersList.map((t) => stockRepo.saveTicker(t)));
     },
 
+    loadTicker: async (symbol) => {
+      const ticker = await twelveData.tickerInfo(symbol);
+      if (ticker) await stockRepo.saveTicker({ ...ticker, marketCap: 0 });
+    },
+
     loadLastBar: async (ticker) => {
       const { symbol } = ticker;
       const lastBar = await twelveData.getLastBar(symbol);
@@ -30,6 +35,12 @@ export const init = (pg) => {
       await Promise.all(
         history.map((h) => stockRepo.saveBar({ ...h, ticker: symbol })),
       );
+    },
+
+    symbolSearch: async (symbol) => {
+      const tickers = await twelveData.symbolSearch(symbol);
+
+      return tickers.filter((t) => t.type === 'stock');
     },
   };
 };

@@ -1,4 +1,4 @@
-import type { OHLC } from '../../../entities/common.d.ts';
+import type { AssetType, OHLC, Ticker } from '../../../entities/common.d.ts';
 
 export interface TwelveData {
   getLastBar: (
@@ -9,4 +9,6 @@ export interface TwelveData {
     from: number,
     to: number,
   ) => Promise<(OHLC & { identifier: string })[]>;
+  symbolSearch: (symbol: string) => Promise<(Ticker & { type: AssetType })[]>;
+  tickerInfo: (symbol: string) => Promise<Ticker | null>;
 }

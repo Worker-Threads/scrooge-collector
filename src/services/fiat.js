@@ -16,6 +16,9 @@ export const init = (pg) => {
       await Promise.all(currencyList.map((t) => fiatRepo.saveTicker(t)));
     },
 
+    // All currencies are already loaded.
+    loadTicker: async () => {},
+
     loadLastBar: async (currency) => {
       const { symbol } = currency;
       const pair = `${symbol}/USD`;
@@ -33,5 +36,8 @@ export const init = (pg) => {
         history.map((h) => fiatRepo.saveBar({ ...h, currency: symbol })),
       );
     },
+
+    // All currencies are already loaded.
+    symbolSearch: async (symbol) => [],
   };
 };

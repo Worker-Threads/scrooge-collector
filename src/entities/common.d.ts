@@ -1,3 +1,5 @@
+export type AssetType = 'crypto' | 'etf' | 'stock' | 'fiat';
+
 export interface Ticker {
   symbol: string;
   name: string;
