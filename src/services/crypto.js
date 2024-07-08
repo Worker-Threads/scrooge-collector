@@ -1,4 +1,7 @@
-/** @typedef {import('./types').Init['crypto']} init */
+/**
+ * @typedef {import('./types').Init['crypto']} init
+ * @typedef {import('../entities/common').Ticker} Ticker
+ */
 
 import { init as initRepo } from '../data/repositories/crypto/main.js';
 import { cmc } from '../data/providers/cmc/cmc.js';
@@ -55,10 +58,18 @@ export const init = (pg) => {
         (t) => t.type === 'crypto' && t.symbol.endsWith('/USD'),
       );
 
-      return cryptoTickers.map((t) => ({
-        symbol: t.symbol.split('/USD')[0],
-        name: t.name.split(' US Dollar')[0],
-      }));
+      /** @type {Record<string, Ticker>} */
+      const uniqueTickersMap = {};
+
+      cryptoTickers.forEach((t) => {
+        const symbol = t.symbol.split('/USD')[0];
+        const name = t.name.split(' US Dollar')[0];
+        const key = `${symbol}-${name}`;
+
+        if (!uniqueTickersMap[key]) uniqueTickersMap[key] = { symbol, name };
+      });
+
+      return Object.values(uniqueTickersMap);
     },
   };
 };

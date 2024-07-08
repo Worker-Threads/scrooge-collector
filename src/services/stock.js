@@ -1,4 +1,7 @@
-/** @typedef {import('./types').Init['stock']} init */
+/**
+ * @typedef {import('./types').Init['stock']} init
+ * @typedef {import('../entities/common').Ticker} Ticker
+ */
 
 import { init as initRepo } from '../data/repositories/stock/main.js';
 import { mockData } from '../data/providers/mock/mock.js';
@@ -41,8 +44,18 @@ export const init = (pg) => {
 
     symbolSearch: async (symbol) => {
       const tickers = await twelveData.symbolSearch(symbol);
+      const stockTickers = tickers.filter((t) => t.type === 'etf');
 
-      return tickers.filter((t) => t.type === 'stock');
+      /** @type {Record<string, Ticker>} */
+      const uniqueTickersMap = {};
+
+      stockTickers.forEach(({ symbol, name }) => {
+        const key = `${symbol}-${name}`;
+
+        if (!uniqueTickersMap[key]) uniqueTickersMap[key] = { symbol, name };
+      });
+
+      return tickers.filter((t) => t.type === 'etf');
     },
   };
 };
