@@ -46,7 +46,11 @@ export const twelveData = {
   },
 
   /** @type {Service['getHistory']} */
-  getHistory: async (symbol, from, to) => {
+  getHistory: async (
+    symbol,
+    from = config.twelveData.defaultFrom,
+    to = config.twelveData.defaultTo,
+  ) => {
     try {
       const { twelveData } = config;
       await requestMultiLimiter(twelveData.limits);
