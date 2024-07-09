@@ -30,7 +30,7 @@ export const init = (pg) => {
     loadHistory: async (currency, from, to) => {
       const { symbol } = currency;
       const pair = `${symbol}/USD`;
-      const history = await twelveData.getHistory(pair, from, to);
+      const history = await twelveData.getHistory(pair, 'fiat', from, to);
 
       await Promise.all(
         history.map((h) => fiatRepo.saveBar({ ...h, currency: symbol })),

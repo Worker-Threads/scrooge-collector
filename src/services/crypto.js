@@ -22,23 +22,22 @@ export const init = (pg) => {
     loadTicker: async (symbol) => {
       const pair = `${symbol}/USD`;
       const ticker = await twelveData.tickerInfo(pair);
+      const bars = await twelveData.getHistory(pair, 'crypto');
+      if (!ticker || !bars.length) return { loaded: false };
 
-      if (ticker) {
-        const logo = await cmc.getTickerLogo(symbol);
-        await cryptoRepo.saveTicker({
-          logo,
-          symbol: ticker.symbol.split('/USD')[0],
-          name: ticker.name.split(' US Dollar')[0],
-          marketCap: 0,
-        });
-        const bars = await twelveData.getHistory(pair);
+      const logo = await cmc.getTickerLogo(symbol);
+      await cryptoRepo.saveTicker({
+        logo,
+        symbol: ticker.symbol.split('/USD')[0],
+        name: ticker.name.split(' US Dollar')[0],
+        marketCap: 0,
+      });
 
-        await Promise.all(
-          bars.map((bar) => cryptoRepo.saveBar({ ...bar, ticker: symbol })),
-        );
-      }
+      await Promise.all(
+        bars.map((bar) => cryptoRepo.saveBar({ ...bar, ticker: symbol })),
+      );
 
-      return { loaded: !!ticker };
+      return { loaded: true };
     },
 
     loadLastBar: async (ticker) => {
@@ -54,7 +53,7 @@ export const init = (pg) => {
       const { symbol } = ticker;
 
       const pair = `${symbol}/USD`;
-      const bars = await twelveData.getHistory(pair, from, to);
+      const bars = await twelveData.getHistory(pair, 'crypto', from, to);
 
       await Promise.all(
         bars.map((bar) => cryptoRepo.saveBar({ ...bar, ticker: symbol })),

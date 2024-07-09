@@ -21,17 +21,15 @@ export const init = (pg) => {
 
     loadTicker: async (symbol) => {
       const ticker = await twelveData.tickerInfo(symbol);
+      const bars = await twelveData.getHistory(symbol, 'stock');
+      if (!ticker || !bars.length) return { loaded: false };
 
-      if (ticker) {
-        await stockRepo.saveTicker({ ...ticker, marketCap: 0 });
-        const bars = await twelveData.getHistory(symbol);
+      await stockRepo.saveTicker({ ...ticker, marketCap: 0 });
+      await Promise.all(
+        bars.map((bar) => stockRepo.saveBar({ ...bar, ticker: symbol })),
+      );
 
-        await Promise.all(
-          bars.map((bar) => stockRepo.saveBar({ ...bar, ticker: symbol })),
-        );
-      }
-
-      return { loaded: !!ticker };
+      return { loaded: true };
     },
 
     loadLastBar: async (ticker) => {
@@ -43,7 +41,7 @@ export const init = (pg) => {
 
     loadHistory: async (ticker, from, to) => {
       const { symbol } = ticker;
-      const bars = await twelveData.getHistory(symbol, from, to);
+      const bars = await twelveData.getHistory(symbol, 'stock', from, to);
 
       await Promise.all(
         bars.map((bar) => stockRepo.saveBar({ ...bar, ticker: symbol })),

@@ -6,6 +6,7 @@ export interface TwelveData {
   ) => Promise<(OHLC & { identifier: string }) | null>;
   getHistory: (
     symbol: string,
+    type: AssetType,
     from?: number,
     to?: number,
   ) => Promise<(OHLC & { identifier: string })[]>;
