@@ -37,7 +37,7 @@ const loadTickers = async ({ services, limit }) => {
   }
 };
 
-// E.g: node src/scripts/history.js --limit 10 --services etf fiat
+// E.g: node src/scripts/tickers.js --limit 10 --services etf fiat
 /** @type {{ services: string[]; limit?: number }} */
 // @ts-ignore
 const argv = yargs(hideBin(process.argv))
