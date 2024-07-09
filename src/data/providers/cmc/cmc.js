@@ -71,4 +71,28 @@ export const cmc = {
       return [];
     }
   },
+
+  /** @type {Service['getTickerLogo']} */
+  getTickerLogo: async (symbol) => {
+    try {
+      const { cmc } = config;
+      await requestMultiLimiter(cmc.limits);
+
+      const url = new URL(`${cmc.baseUrl}/cryptocurrency/info`);
+      url.searchParams.append('symbol', symbol);
+
+      const response = await fetch(url, {
+        headers: { 'X-CMC_PRO_API_KEY': cmc.apiKey },
+      });
+
+      /** @type {{ status: { error_code: number, error_message: string }, data: any }} */
+      const data = await response.json();
+      if (data.status.error_code !== 0) throw Error(data.status.error_message);
+
+      return data.data[symbol].logo;
+    } catch (error) {
+      console.log({ timestamp: Date.now(), params: { symbol }, error });
+      return undefined;
+    }
+  },
 };
