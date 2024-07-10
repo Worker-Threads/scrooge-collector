@@ -25,9 +25,19 @@ const getUSDBar = (timestamp) => ({
   timestamp,
 });
 
+/**
+ * @param {number} from
+ * @param {number} to
+ */
+const getUSDHistory = (from, to) => {
+  const range = getDatesInRange(from, to);
+  return range.map((ts) => getUSDBar(ts));
+};
+
 export const twelveData = {
   /** @type {Service['getLastBar']} */
   getLastBar: async (symbol) => {
+    if (symbol === 'USD/USD') return getUSDBar(getUTCDateRounded());
     try {
       const { twelveData } = config;
       await requestMultiLimiter(twelveData.limits);
@@ -59,8 +69,6 @@ export const twelveData = {
         timestamp: new Date(datetime).getTime(),
       };
     } catch (error) {
-      if (symbol === 'USD/USD') return getUSDBar(getUTCDateRounded());
-
       console.log({ timestamp: Date.now(), prams: { symbol }, error });
       return null;
     }
@@ -74,6 +82,7 @@ export const twelveData = {
     to = config.twelveData.defaultTo,
   ) => {
     try {
+      if (symbol === 'USD/USD') return getUSDHistory(from, to);
       const { twelveData } = config;
       await requestMultiLimiter(twelveData.limits);
 
@@ -114,11 +123,6 @@ export const twelveData = {
         timestamp: new Date(v.datetime).getTime(),
       }));
     } catch (error) {
-      if (symbol === 'USD/USD') {
-        const range = getDatesInRange(from, to);
-        return range.map((ts) => getUSDBar(ts));
-      }
-
       console.log({
         timestamp: Date.now(),
         prams: { symbol, from, to },
