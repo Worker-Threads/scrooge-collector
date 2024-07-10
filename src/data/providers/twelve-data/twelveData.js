@@ -5,6 +5,7 @@
 
 import { config } from '../../../config.js';
 import { requestMultiLimiter } from '../../../utils/limiter.js';
+import { getUTCDateRounded, getDatesInRange } from './time.js';
 
 /** @type {Record<string, AssetType>} */
 const instrumentTypeToAssetType = {
@@ -13,6 +14,16 @@ const instrumentTypeToAssetType = {
   'Common Stock': 'stock',
   'Physical Currency': 'fiat',
 };
+
+/*** @param {number} timestamp */
+const getUSDBar = (timestamp) => ({
+  identifier: 'USD/USD',
+  open: 1,
+  high: 1,
+  low: 1,
+  close: 1,
+  timestamp,
+});
 
 export const twelveData = {
   /** @type {Service['getLastBar']} */
@@ -48,6 +59,8 @@ export const twelveData = {
         timestamp: new Date(datetime).getTime(),
       };
     } catch (error) {
+      if (symbol === 'USD/USD') return getUSDBar(getUTCDateRounded());
+
       console.log({ timestamp: Date.now(), prams: { symbol }, error });
       return null;
     }
@@ -101,6 +114,11 @@ export const twelveData = {
         timestamp: new Date(v.datetime).getTime(),
       }));
     } catch (error) {
+      if (symbol === 'USD/USD') {
+        const range = getDatesInRange(from, to);
+        return range.map((ts) => getUSDBar(ts));
+      }
+
       console.log({
         timestamp: Date.now(),
         prams: { symbol, from, to },
