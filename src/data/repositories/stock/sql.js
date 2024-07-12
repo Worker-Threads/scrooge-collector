@@ -24,17 +24,18 @@ export const selectTickers = (limit) => {
  * @returns {{ query: string, params: any[] }}
  */
 export const insertTicker = (ticker) => {
-  const { symbol, name, marketCap } = ticker;
+  const { symbol, name, marketCap, logo } = ticker;
   const query = `
     INSERT INTO stock.ticker
-    ("symbol", "name", "marketCap")
-    VALUES ($1, $2, $3)
+    ("symbol", "name", "marketCap", "logo")
+    VALUES ($1, $2, $3, $4)
     ON CONFLICT ("symbol")
     DO UPDATE SET
       "name" = EXCLUDED."name",
+      "logo" = EXCLUDED."logo",
       "marketCap" = EXCLUDED."marketCap";`;
 
-  const params = [symbol, name, marketCap];
+  const params = [symbol, name, marketCap, logo];
 
   return { query, params };
 };

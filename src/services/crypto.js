@@ -25,7 +25,9 @@ export const init = (pg) => {
       const bars = await twelveData.getHistory(pair, 'crypto');
       if (!ticker || !bars.length) return { loaded: false };
 
+      const logo = await cmc.getTickerLogo(symbol);
       await cryptoRepo.saveTicker({
+        logo,
         symbol: ticker.symbol.split('/USD')[0],
         name: ticker.name.split(' US Dollar')[0],
         marketCap: 0,

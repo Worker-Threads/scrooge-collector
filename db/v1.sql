@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS crypto.ticker (
   "symbol" VARCHAR(10),
   "name"  VARCHAR(255) NOT NULL,
   "marketCap" NUMERIC(40, 17) NOT NULL,
+  "logo" VARCHAR,
   PRIMARY KEY ("symbol")
 );
 
@@ -42,6 +43,7 @@ CREATE TABLE IF NOT EXISTS etf.ticker (
   "symbol" VARCHAR(10),
   "name"  VARCHAR(255) NOT NULL,
   "marketCap" NUMERIC(40, 17),
+  "logo" VARCHAR,
   PRIMARY KEY ("symbol")
 );
 
@@ -61,6 +63,7 @@ CREATE TABLE IF NOT EXISTS stock.ticker (
   "symbol" VARCHAR(10),
   "name"  VARCHAR(255) NOT NULL,
   "marketCap" NUMERIC(40, 17),
+  "logo" VARCHAR,
   PRIMARY KEY ("symbol")
 );
 
