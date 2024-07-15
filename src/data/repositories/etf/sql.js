@@ -4,7 +4,7 @@
  */
 
 /**
- * @param {number=} limit
+ * @param {number} [limit]
  * @returns {{ query: string, params: any[] }}
  */
 export const selectTickers = (limit) => {

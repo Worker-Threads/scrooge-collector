@@ -1,10 +1,8 @@
-/** @typedef {import('./types').Init['fiat']} init */
-
 import { init as initRepo } from '../data/repositories/fiat/main.js';
 import { cmc } from '../data/providers/cmc/cmc.js';
 import { twelveData } from '../data/providers/twelve-data/twelveData.js';
 
-/** @type {init} */
+/** @type {import('./types').Init['fiat']} */
 export const init = (pg) => {
   const fiatRepo = initRepo(pg);
 

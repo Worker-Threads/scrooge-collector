@@ -1,8 +1,6 @@
-/** @typedef {import('./types').Utils} Utils */
-
 import { setTimeout } from 'timers/promises';
 
-/** @type {Utils['getRoundedInterval']} */
+/** @type {import('./types').Utils['getRoundedInterval']} */
 export async function* getRoundedInterval(interval, offset) {
   let elapsed = Math.floor(Date.now() / interval);
 
