@@ -17,21 +17,21 @@ export const init = (pg) => {
     // All currencies are already loaded.
     loadTicker: async () => ({ loaded: false }),
 
-    loadLastBar: async (currency) => {
-      const { symbol } = currency;
+    loadLastBar: async (ticker) => {
+      const { symbol } = ticker;
       const pair = `${symbol}/USD`;
       const lastBar = await twelveData.getLastBar(pair);
 
-      if (lastBar) await fiatRepo.saveBar({ ...lastBar, currency: symbol });
+      if (lastBar) await fiatRepo.saveBar({ ...lastBar, ticker: symbol });
     },
 
-    loadHistory: async (currency, from, to) => {
-      const { symbol } = currency;
+    loadHistory: async (ticker, from, to) => {
+      const { symbol } = ticker;
       const pair = `${symbol}/USD`;
       const history = await twelveData.getHistory(pair, 'fiat', from, to);
 
       await Promise.all(
-        history.map((h) => fiatRepo.saveBar({ ...h, currency: symbol })),
+        history.map((h) => fiatRepo.saveBar({ ...h, ticker: symbol })),
       );
     },
 

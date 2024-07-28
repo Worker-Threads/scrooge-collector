@@ -5,7 +5,9 @@
   "main": "main.js",
   "scripts": {
     "start": "node main.js",
-    "check": "tsc --project . && eslint ."
+    "check": "tsc --project . && eslint .",
+    "migrate:up": "node db/migration.js up",
+    "migrate:down": "node db/migration.js down"
   },
   "keywords": [],
   "author": "Worker-Threads",

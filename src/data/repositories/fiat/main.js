@@ -9,8 +9,8 @@ export const init = (pool) => ({
     return rows;
   },
 
-  saveTicker: async (currency) => {
-    const { query, params } = insertCurrency(currency);
+  saveTicker: async (ticker) => {
+    const { query, params } = insertCurrency(ticker);
     await pool.query(query, params);
   },
 

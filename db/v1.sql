@@ -1,6 +1,6 @@
 CREATE SCHEMA IF NOT EXISTS "fiat";
 
-CREATE TABLE IF NOT EXISTS fiat.currency (
+CREATE TABLE IF NOT EXISTS fiat.ticker (
   "symbol" VARCHAR(10),
   "sign" VARCHAR(10),
   "name"  VARCHAR(255) NOT NULL,
@@ -8,13 +8,13 @@ CREATE TABLE IF NOT EXISTS fiat.currency (
 );
 
 CREATE TABLE IF NOT EXISTS fiat.bar_d (
-  "currency" VARCHAR(10) REFERENCES fiat.currency("symbol"),
+  "ticker" VARCHAR(10) REFERENCES fiat.ticker("symbol"),
   "open" NUMERIC(40, 17) NOT NULL,
   "high" NUMERIC(40, 17) NOT NULL,
   "low" NUMERIC(40, 17) NOT NULL,
   "close" NUMERIC(40, 17) NOT NULL,
   "timestamp" TIMESTAMP,
-  PRIMARY KEY ("currency", "timestamp")
+  PRIMARY KEY ("ticker", "timestamp")
 );
 
 CREATE SCHEMA IF NOT EXISTS "crypto";

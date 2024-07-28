@@ -5,5 +5,5 @@ export interface Currency extends CommonTypes.Ticker {
 }
 
 export interface Bar extends CommonTypes.OHLC {
-  currency: string;
+  ticker: string;
 }
